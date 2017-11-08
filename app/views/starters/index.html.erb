@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Starters</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Content</th>
+      <th>Category</th>
+      <th>Upvotes</th>
+      <th>Downvotes</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @starters.each do |starter| %>
+      <tr>
+        <td><%= starter.content %></td>
+        <td><%= starter.category %></td>
+        <td><%= starter.upvotes %></td>
+        <td><%= starter.downvotes %></td>
+        <td><%= link_to 'Show', starter %></td>
+        <td><%= link_to 'Edit', edit_starter_path(starter) %></td>
+        <td><%= link_to 'Destroy', starter, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Starter', new_starter_path %>

@@ -1,0 +1,35 @@
+<%if user_signed_in?%>
+Congrats <%= current_user.email%><br />
+<%= link_to("Sign Out", destroy_user_session_path, :method => :delete)%><br />
+<%= link_to("Edit", edit_user_registration_path)%>
+<%else%>3
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '976431432508451',
+      xfbml      : true,
+      version    : 'v2.10'
+    });
+    FB.AppEvents.logPageView();
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+<div
+  class="fb-like"
+  data-share="true"
+  data-width="450"
+  data-show-faces="true">
+</div>
+
+nope<br />
+<%= link_to("Sign In", new_user_session_path)%><br />
+<%= link_to("Sign Up", new_user_registration_path)%><br />
+<%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
+<%end%>
